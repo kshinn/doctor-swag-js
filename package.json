@@ -1,0 +1,39 @@
+{
+  "name": "node-swag-gen",
+  "version": "0.1.0",
+  "description": "A node.js based library to generate code from Swagger 2.0 documents",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kshinn/node-swag-gen.git"
+  },
+  "keywords": [
+    "Swagger",
+    "node",
+    "js",
+    "codegen"
+  ],
+  "author": "Kris Shinn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kshinn/node-swag-gen/issues"
+  },
+  "homepage": "https://github.com/kshinn/node-swag-gen#readme",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "jshint": "^2.9.1-rc1",
+    "lodash": "^3.10.1",
+    "swagger-tools": "^0.9.9"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-mocha-test": "^0.12.7",
+    "load-grunt-tasks": "^3.3.0",
+    "mocha": "^2.3.4",
+    "rewire": "^2.5.1"
+  }
+}
