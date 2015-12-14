@@ -9,7 +9,6 @@ namespace {{moduleName}} {
          * {{{.}}}
          **/{{/description}}
         {{name}}: {{#if isArray}}{{elementType.target}}[]{{else}}{{tsType}}{{/if}};
-
         {{/properties}}
     }
 }

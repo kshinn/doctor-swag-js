@@ -64,10 +64,6 @@ describe('Default Renderers', function() {
             type: 'angularTs'
         });
 
-        _.each(data.definitions, function(item) {
-         console.log(item.properties);
-        });
-
         renderFn = renderer.get('angularTs');
         result = renderFn(data);
         assert.isObject(result);
@@ -75,7 +71,6 @@ describe('Default Renderers', function() {
         // Ensure each definition is rendered as a file
         _.forEach(data.definitions, function(def) {
             var fileName = def.name + '.ts';
-            console.log(result[fileName]);
             assert(result.hasOwnProperty(fileName), 'results should have key ' + fileName);
             assert.isString(result[fileName]);
         });
