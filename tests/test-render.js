@@ -38,7 +38,7 @@ describe('Default Renderers', function() {
         assert.isString(result);
     });
 
-    it('should produce Andular TypeScript', function() {
+    it('should produce Angular TypeScript', function() {
         var data, result, renderFn;
         data = process(echoApi, {
             moduleName: 'TsModule',
@@ -49,6 +49,5 @@ describe('Default Renderers', function() {
         renderFn = renderer.get('angularTs');
         result = renderFn(data);
         assert.isString(result);
-        console.log(result);
     });
 })

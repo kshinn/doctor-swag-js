@@ -2,7 +2,7 @@
 
 /* tslint:disable:no-unused-variable member-ordering */
 
-module {{moduleName}} {
+namespace {{moduleName}} {
     'use strict';
 
     export class {{className}} {

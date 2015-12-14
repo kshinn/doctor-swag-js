@@ -1,5 +1,5 @@
 {
-  "name": "node-swag-gen",
+  "name": "doctor-swag",
   "version": "0.1.0",
   "description": "A node.js based library to generate code from Swagger 2.0 documents",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/kshinn/node-swag-gen.git"
+    "url": "git+ssh://git@github.com/kshinn/doctor-swag-js.git"
   },
   "keywords": [
     "Swagger",
