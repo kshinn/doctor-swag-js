@@ -19,7 +19,7 @@ describe('Default Renderers', function() {
             type: 'angularJs'
         });
 
-        renderFn = renderer.angularJs();
+        renderFn = renderer.get('angularJs');
         result = renderFn(data);
         assert.isString(result);
 
@@ -33,9 +33,22 @@ describe('Default Renderers', function() {
             type: 'node'
         });
 
-        renderFn = renderer.nodeJs();
+        renderFn = renderer.get('nodeJs');
+        result = renderFn(data);
+        assert.isString(result);
+    });
+
+    it('should produce Andular TypeScript', function() {
+        var data, result, renderFn;
+        data = process(echoApi, {
+            moduleName: 'TsModule',
+            className: 'TsApi',
+            type: 'angularTs'
+        });
+
+        renderFn = renderer.get('angularTs');
         result = renderFn(data);
         assert.isString(result);
         console.log(result);
-    })
+    });
 })
