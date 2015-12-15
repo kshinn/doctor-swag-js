@@ -23,7 +23,7 @@ public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{fo
         method: "{{method}}",
         url: path,
         json: true,
-
+        {{#if bodyParamName}}data: {{bodyParamName}},{{/if}}
         params: queryParams,
         headers: headerParams
     };

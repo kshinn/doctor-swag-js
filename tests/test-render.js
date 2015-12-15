@@ -77,21 +77,21 @@ describe('Default Renderers', function() {
         });
     });
 
-    // it('should render our swagger', function() {
-    //     var ourApi = fs.readFileSync(__dirname + '/apis/swagger.yaml', 'UTF-8');
-    //     ourApi = yaml.load(ourApi);
+    it('should render our swagger', function() {
+        var ourApi = fs.readFileSync(__dirname + '/apis/swagger.yaml', 'UTF-8');
+        ourApi = yaml.load(ourApi);
 
-    //     data = process(ourApi, {
-    //         moduleName: 'Keypr',
-    //         className: 'KeyprApi',
-    //         type: 'angularTs'
-    //     });
+        data = process(ourApi, {
+            moduleName: 'Keypr',
+            className: 'KeyprApi',
+            type: 'angularTs'
+        });
 
-    //     renderFn = renderer.get('angularTs');
-    //     result = renderFn(data);
-    //     _.each(data.methods, function(item) {
-    //         console.log(item);
-    //     });
-    //     console.log(result['Keypr.ts']);
-    // })
+        renderFn = renderer.get('angularTs');
+        result = renderFn(data);
+        _.each(data.definitions, function(item) {
+            console.log(item);
+        });
+        console.log(result['Keypr.ts']);
+    })
 })

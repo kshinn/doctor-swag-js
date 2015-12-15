@@ -8,7 +8,7 @@ namespace {{moduleName}} {
         {{#description}}/**
          * {{{.}}}
          **/{{/description}}
-        {{name}}: {{#if isArray}}{{elementType.target}}[]{{else}}{{tsType}}{{/if}};
+        {{name}}: {{ formatPropertyType . }};
 
         {{/properties}}
     }
