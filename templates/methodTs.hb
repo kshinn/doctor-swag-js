@@ -2,7 +2,7 @@
 public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{formatParamType .}}, {{/parameters}}extraHttpRequestParams?: any): ng.IHttpPromise<{{{ formatResponse responseType }}}> {
     {{#if hasPathParameter}}
     const path = this.basePath + "{{path}}"{{#parameters}}{{#if_eq in 'path'}}
-        .replace('{' + {{name}} + '}', String({{name}})){{/if_eq}}{{/parameters}};
+        .replace('{{curlify name}}', String({{name}})){{/if_eq}}{{/parameters}};
     {{else}}
     const path = this.basePath + "{{path}}";
     {{/if}}
@@ -17,6 +17,12 @@ public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{fo
         throw new Error('Missing required parameter {{{name}}} when calling {{{../methodName}}}');
     }
     {{/if}}
+
+    {{#if_eq in 'query'}}
+    if ({{name}} !== undefined) {
+        queryParams['{{name}}'] = {{name}};
+    }
+    {{/if_eq}}
 
     {{/parameters}}
     let httpRequestParams: any = {

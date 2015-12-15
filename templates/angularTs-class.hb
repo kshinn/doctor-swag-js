@@ -6,7 +6,7 @@ namespace {{moduleName}} {
     'use strict';
 
     export class {{className}} {
-        {{#domain}}protected basePath = "{{{domain}}}";{{/domain}}
+        protected basePath = "{{{domain}}}";
         public defaultHeaders: any = {};
 
         public static $inject = ["$http", "$httpParamSerializer"];
