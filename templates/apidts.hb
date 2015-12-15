@@ -1,0 +1,3 @@
+{{#files}}
+/// <reference path="{{.}}" />
+{{/files}}

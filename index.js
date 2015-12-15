@@ -1,3 +1,5 @@
 var generator = require('./lib/generator.js');
 
-console.log('ok');
+exports = module.exports = function() {
+    return generator;
+}();

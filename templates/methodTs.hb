@@ -1,8 +1,8 @@
 {{#summary}}/*{{{summary}}}*/{{/summary}}
-public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{type}}, {{/parameters}}extraHttpRequestParams?: any): ng.IHttpPromise<{{{ responseType }}}> => {
+public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{type}}, {{/parameters}}extraHttpRequestParams?: any): ng.IHttpPromise<{{{ formatResponse responseType }}}> => {
     {{#if hasPathParameter}}
-    const path = this.basePath + "{{path}}"
-    {{#parameters}}{{#if_eq in 'path'}}    .replace('{' + {{name}} + '}', String({{name}})){{/if_eq}}{{/parameters}};
+    const path = this.basePath + "{{path}}"{{#parameters}}{{#if_eq in 'path'}}
+        .replace('{' + {{name}} + '}', String({{name}})){{/if_eq}}{{/parameters}};
     {{else}}
     const path = this.basePath + "{{path}}";
     {{/if}}

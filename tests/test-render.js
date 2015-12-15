@@ -3,7 +3,8 @@ var renderer = require('../lib/renderers'),
     rewire = require('rewire'),
     generator = rewire('../lib/generator.js'),
     fs = require('fs'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    yaml = require('yaml-js');
 
 describe('Default Renderers', function() {
     var echoApi = fs.readFileSync(__dirname + '/apis/echo.json'),
@@ -75,4 +76,22 @@ describe('Default Renderers', function() {
             assert.isString(result[fileName]);
         });
     });
+
+    // it('should render our swagger', function() {
+    //     var ourApi = fs.readFileSync(__dirname + '/apis/swagger.yaml', 'UTF-8');
+    //     ourApi = yaml.load(ourApi);
+
+    //     data = process(ourApi, {
+    //         moduleName: 'Keypr',
+    //         className: 'KeyprApi',
+    //         type: 'angularTs'
+    //     });
+
+    //     renderFn = renderer.get('angularTs');
+    //     result = renderFn(data);
+    //     _.each(data.methods, function(item) {
+    //         console.log(item);
+    //     });
+    //     console.log(result['Keypr.ts']);
+    // })
 })

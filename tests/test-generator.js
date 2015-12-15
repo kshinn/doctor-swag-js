@@ -12,8 +12,9 @@ describe('generator', function() {
     it('should add render plugins', function() {
         var plugins;
 
+        // Register a constructor function that returns a callable
         generator.addRenderPlugin('test-plugin', function(s) {
-            executed = true;
+            return function() { executed = true };
         });
 
         plugins = generator.listRenderPlugins();
