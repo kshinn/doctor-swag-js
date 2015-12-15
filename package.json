@@ -17,11 +17,11 @@
     "codegen"
   ],
   "author": "Kris Shinn",
-  "license": "ISC",
+  "license": "Apache 2",
   "bugs": {
-    "url": "https://github.com/kshinn/node-swag-gen/issues"
+    "url": "https://github.com/kshinn/doctor-swag-js/issues"
   },
-  "homepage": "https://github.com/kshinn/node-swag-gen#readme",
+  "homepage": "https://github.com/kshinn/doctor-swag-js#readme",
   "dependencies": {
     "handlebars": "^4.0.5",
     "jshint": "^2.9.1-rc1",
