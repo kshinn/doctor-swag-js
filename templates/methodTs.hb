@@ -1,5 +1,5 @@
 {{#summary}}/*{{{summary}}}*/{{/summary}}
-public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{type}}, {{/parameters}}extraHttpRequestParams?: any): ng.IHttpPromise<{{{ formatResponse responseType }}}> => {
+public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{formatParamType .}}, {{/parameters}}extraHttpRequestParams?: any): ng.IHttpPromise<{{{ formatResponse responseType }}}> {
     {{#if hasPathParameter}}
     const path = this.basePath + "{{path}}"{{#parameters}}{{#if_eq in 'path'}}
         .replace('{' + {{name}} + '}', String({{name}})){{/if_eq}}{{/parameters}};
@@ -8,7 +8,7 @@ public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{ty
     {{/if}}
 
     // Fill this out with q params
-    let queryParams: any {};
+    let queryParams: any = {};
     let headerParams: any = this.extendObj({}, this.defaultHeaders);
 
     {{#parameters}}
@@ -20,7 +20,7 @@ public {{ methodName }} ({{#parameters}}{{name}}{{^required}}?{{/required}}:{{ty
 
     {{/parameters}}
     let httpRequestParams: any = {
-        method: {{method}},
+        method: "{{method}}",
         url: path,
         json: true,
 
