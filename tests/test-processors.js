@@ -2,7 +2,10 @@
 
 var assert = require('chai').assert,
     fs = require('fs'),
-    processors = require('../lib/processors');
+    rewire = require('rewire'),
+    processSwagger = rewire('../lib/generator').__get__('processSwagger'),
+    processors = require('../lib/processors'),
+    _ = require('lodash');
 
 describe('data processors', function() {
     var echoApi = fs.readFileSync(__dirname + '/apis/echo.json'),
@@ -34,4 +37,26 @@ describe('data processors', function() {
 
     });
 
+    it('should be able to add processors', function() {
+        // This is a pipeline so you always need return data in order to not break the pipe
+        processors.addProcessor(function(swagger, opts, data) {
+            data.testAttribute = true;
+            return data;
+        });
+
+        assert.lengthOf(processors.allProcessors, 3);
+        var result = processSwagger(echoApi, {moduleName: 'test', className: 'test'});
+        assert(result.testAttribute);
+    });
+
+    it('should not be able to add non functions', function() {
+        var caughtErr = false;
+        try {
+            assert.processors.addProcessor('anything')
+        } catch(err) {
+            caughtErr = true;
+        } finally {
+            assert.ok(caughtErr, 'You should not be able to add non functions to processors');
+        }
+    })
 });

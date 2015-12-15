@@ -86,12 +86,13 @@ describe('Default Renderers', function() {
             className: 'KeyprApi',
             type: 'angularTs'
         });
+        //console.log(data);
 
         renderFn = renderer.get('angularTs');
         result = renderFn(data);
-        _.each(data.definitions, function(item) {
-            console.log(item);
-        });
-        console.log(result['Keypr.ts']);
+        // _.each(data.definitions, function(item) {
+        //     console.log(item);
+        // });
+        //console.log(result['Keypr.ts']);
     })
 })
