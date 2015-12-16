@@ -94,5 +94,19 @@ describe('Default Renderers', function() {
         //     console.log(item);
         // });
         //console.log(result['Keypr.ts']);
-    })
+    });
+
+    it('should render $ref properties', function() {
+        var testRef = fs.readFileSync(__dirname + '/apis/testref.yaml', 'UTF-8');
+        testRef = yaml.load(testRef);
+
+        data = process(testRef, {
+            moduleName: 'API.Client',
+            className: 'DarkApi',
+            type: 'angularTs'
+        });
+
+        renderFn = renderer.get('angularTs');
+        result = renderFn(data);
+    });
 })

@@ -1,0 +1,37 @@
+swagger: '2.0'
+info:
+  description: 'API'
+  version: '0.2.0'
+host: 'localhost:3000'
+basePath: '/api'
+schemes:
+  - http
+paths:
+  '/':
+    get:
+      description: description 1
+      operationId: op1
+      responses:
+        '200':
+          description: the list
+          schema:
+            type: object
+            list:
+              type: array
+              items:
+                $ref: '#/definitions/foo'
+            prop:
+              type: object
+              $ref: '#/definitions/foo'
+definitions:
+  foo:
+    type: object
+    properties:
+      bar_prop:
+        $ref: '#/definitions/bar'
+      bar_list:
+        type: array
+        items:
+          $ref: '#/definitions/bar'
+  bar:
+    type: object

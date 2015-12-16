@@ -1,1 +1,23 @@
-/Users/kris/Development/Keypr/keypr-admin-express/resources/swagger.yaml
+swagger: '2.0'
+info:
+  description: 'API'
+  version: '0.2.0'
+host: 'localhost:3000'
+basePath: '/api'
+schemes:
+  - http
+paths:
+  /foo1:
+    get:
+      description: description 1
+      operationId: op1
+      responses:
+        '200':
+          description: the list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Affiliate'
+definitions:
+  bar:
+    type: object
