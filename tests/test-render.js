@@ -94,5 +94,24 @@ describe('Default Renderers', function() {
         //     console.log(item);
         // });
         //console.log(result['Keypr.ts']);
-    })
+    });
+
+    it('should render $ref properties', function() {
+        var testRef = fs.readFileSync(__dirname + '/apis/testref.yaml', 'UTF-8');
+        testRef = yaml.load(testRef);
+
+        data = process(testRef, {
+            moduleName: 'MyModule',
+            className: 'MyClass',
+            type: 'angularTs'
+        });
+
+        renderFn = renderer.get('angularTs');
+        result = renderFn(data);
+        var expectedDefinition = "bar_prop: Bar";
+        assert(
+            result['foo.ts'].indexOf(expectedDefinition) > -1,
+            "Variable definition is not generated as expect"
+        );
+    });
 })

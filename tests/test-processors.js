@@ -5,7 +5,8 @@ var assert = require('chai').assert,
     rewire = require('rewire'),
     processSwagger = rewire('../lib/generator').__get__('processSwagger'),
     processors = require('../lib/processors'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    yaml = require('yaml-js');
 
 describe('data processors', function() {
     var echoApi = fs.readFileSync(__dirname + '/apis/echo.json'),
@@ -58,5 +59,23 @@ describe('data processors', function() {
         } finally {
             assert.ok(caughtErr, 'You should not be able to add non functions to processors');
         }
-    })
+    });
+
+    it('should process $ref in definitions', function() {
+        var testRef = fs.readFileSync(__dirname + '/apis/testref.yaml', 'UTF-8');
+        testRef = yaml.load(testRef);
+
+        var result = processSwagger(testRef, {});
+        _.each(result.definitions, function(def) {
+            if (def.name === 'foo') {
+                _.each(def.properties, function(prop) {
+                    if ('$ref' in prop) {
+                        assert.isTrue(prop['isRef']);
+                        assert.strictEqual(prop['tsType'], 'ref', '$ref item should have "tsType": ref');
+                        assert.strictEqual(prop['target'], 'Bar', '$ref item point to correct definition');
+                    }
+                });
+            }
+        });
+    });
 });
