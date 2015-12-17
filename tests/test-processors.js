@@ -72,7 +72,7 @@ describe('data processors', function() {
                     if ('$ref' in prop) {
                         assert.isTrue(prop['isRef']);
                         assert.strictEqual(prop['tsType'], 'ref', '$ref item should have "tsType": ref');
-                        assert.strictEqual(prop['target'], 'bar', '$ref item point to correct definition');
+                        assert.strictEqual(prop['target'], 'Bar', '$ref item point to correct definition');
                     }
                 });
             }

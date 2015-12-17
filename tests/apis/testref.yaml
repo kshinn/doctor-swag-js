@@ -28,10 +28,10 @@ definitions:
     type: object
     properties:
       bar_prop:
-        $ref: '#/definitions/bar'
+        $ref: '#/definitions/Bar'
       bar_list:
         type: array
         items:
-          $ref: '#/definitions/bar'
-  bar:
+          $ref: '#/definitions/Bar'
+  Bar:
     type: object

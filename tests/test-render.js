@@ -101,12 +101,17 @@ describe('Default Renderers', function() {
         testRef = yaml.load(testRef);
 
         data = process(testRef, {
-            moduleName: 'API.Client',
-            className: 'DarkApi',
+            moduleName: 'MyModule',
+            className: 'MyClass',
             type: 'angularTs'
         });
 
         renderFn = renderer.get('angularTs');
         result = renderFn(data);
+        var expectedDefinition = "bar_prop: Bar";
+        assert(
+            result['foo.ts'].indexOf(expectedDefinition) > -1,
+            "Variable definition is not generated as expect"
+        );
     });
 })
