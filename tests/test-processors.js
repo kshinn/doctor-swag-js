@@ -25,6 +25,24 @@ describe('data processors', function() {
         assert.lengthOf(result.definitions, 0, 'No definitions should have processed');
     });
 
+    it('should process with no scheme defined', function() {
+        var noScheme = fs.readFileSync(__dirname + '/apis/noScheme.json'), result;
+        noScheme = JSON.parse(noScheme);
+        result = processors.processBasic(noScheme, opts);
+
+        assert.property(result, 'domain');
+        assert.equal(result.domain, '//mazimi-prod.apigee.net/echo')
+    });
+
+    it('should process with only basePath defined', function() {
+        var basePathOnly = fs.readFileSync(__dirname + '/apis/basePath.json'), result;
+        basePathOnly = JSON.parse(basePathOnly);
+        result = processors.processBasic(basePathOnly, opts);
+
+        assert.property(result, 'domain');
+        assert.equal(result.domain, '/echo')
+    });
+
     it('should process definitions', function() {
         var petstoreApi = fs.readFileSync(__dirname + '/apis/petstore.json'),
             result;
