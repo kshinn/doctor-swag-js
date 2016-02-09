@@ -1,6 +1,6 @@
 {
   "name": "doctor-swag",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A node.js based library to generate code from Swagger 2.0 documents",
   "main": "index.js",
   "scripts": {
