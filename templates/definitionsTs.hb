@@ -8,7 +8,7 @@ namespace {{moduleName}} {
         {{#description}}/**
          * {{{.}}}
          **/{{/description}}
-        {{name}}: {{ formatPropertyType . }};
+        {{name}}{{^required}}?{{/required}}: {{ formatPropertyType . }};
 
         {{/properties}}
     }
