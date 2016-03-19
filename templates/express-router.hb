@@ -1,3 +1,5 @@
+/*jshint sub:true*/
+
 /* * *
  * Generated express router
  *
