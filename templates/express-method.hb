@@ -1,5 +1,5 @@
 /* {{summary}} */
-router.{{lowercase method}}('{{path}}', function(req, res) {
+router.{{lowercase method}}('{{expressPath path}}', function(req, res) {
     {{#parameters}}
     {{#if isFormParameter}}var {{camelCaseName}} = req.form['{{name}}'];
     {{/if}}{{#if isPathParameter}}var {{camelCaseName}} = req.params['{{name}}'];
