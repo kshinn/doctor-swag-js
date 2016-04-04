@@ -1,6 +1,6 @@
 # Doctor Swag
 
-This is a node module that functions as an extensible code generator for Swagger 2.0. It is based on wcandillon's excellent module https://github.com/wcandillon/swagger-js-codegen. This module represents a fairly large internal structural change while trying to maintain compatibility with the original module (Swagger 1.x support was dropped).
+This is a node module that functions as an extensible code generator for Swagger 2.0. It is based on wcandillon's excellent module https://github.com/wcandillon/swagger-js-codegen. This module represents a fairly large internal structural change while trying to maintain compatibility with the original module (Swagger 1.x support was dropped). At this point this project can be classified as "Highly Experimental"
 
 ## Additional Features
 * Users swagger-tools to validate the in bound swagger document
@@ -20,7 +20,7 @@ var CodeGen = require('doctorSwag');
 
 var file = 'swagger/spec.json';
 var swagger = JSON.parse(fs.readFileSync(file, 'UTF-8'));
-var nodejsSourceCode = CodeGen({ moduleName: 'TestModule', className: 'Test', swagger: swagger, type: 'node' });
+var nodejsSourceCode = CodeGen({ moduleName: 'TestModule', className: 'Test', swagger: swagger, type: 'nodeJs' });
 var angularTsSourceCode = CodeGen.getAngularCode({ moduleName: 'TestModule', className: 'Test', swagger: swagger, type: 'angularTs' });
 console.log(nodejsSourceCode);
 console.log(angularjsSourceCode);
